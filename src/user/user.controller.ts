@@ -5,6 +5,7 @@ import { GetUser } from 'src/auth/decorators/auth.decorators';
 import { filterDto, recordsDto } from './dto';
 import { InjectDataSource } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
+import { userEntity } from 'src/auth/models';
 
 @UseGuards(AuthGuard('jwt'))
 @Controller('user')
@@ -18,12 +19,14 @@ export class UserController {
   //   return user;
   // }
   @Get('/records')
-  getQuery(@Body() data: recordsDto) {
+  getQuery(@Body() data: recordsDto): Promise<Array<Object>> {
     return this.userService.getQuery(data);
   }
 
   @Get('/filters?')
-  getFilteredData(@Query() data: filterDto) {
+  getFilteredData(
+    @Query() data: filterDto,
+  ): Promise<userEntity[] | { message: string }> {
     return this.userService.getFiltered(data);
   }
 }

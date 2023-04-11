@@ -14,12 +14,9 @@ export class AuthService {
     private jwt: JwtService,
     private config: ConfigService,
   ) {}
-  async signup(body: userInterface): Promise<
-    | {
-        token: string;
-      }
-    | 'Something Went Wrong'
-  > {
+  async signup(
+    body: userInterface,
+  ): Promise<{ token: string } | 'Something Went Wrong'> {
     const hash: string = await argon.hash(body.password);
     try {
       const user: userEntity = await this.userRepo.save({
@@ -33,14 +30,9 @@ export class AuthService {
       return 'Something Went Wrong';
     }
   }
-  async signin(body: signInInterface): Promise<
-    | {
-        token: string;
-      }
-    | {
-        error: any;
-      }
-  > {
+  async signin(
+    body: signInInterface,
+  ): Promise<{ token: string } | { error: any }> {
     try {
       const user: userEntity = await this.userRepo.findOne({
         where: {
@@ -60,12 +52,7 @@ export class AuthService {
       return { error: error.message };
     }
   }
-  async signToken(
-    id: number,
-    email: string,
-  ): Promise<{
-    token: string;
-  }> {
+  async signToken(id: number, email: string): Promise<{ token: string }> {
     const payload = {
       sub: id,
       email,

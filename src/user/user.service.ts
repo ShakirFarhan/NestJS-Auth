@@ -10,10 +10,10 @@ export class UserService {
     private readonly userRepo: Repository<userEntity>,
     @InjectDataSource() private readonly connection: DataSource,
   ) {}
-  getQuery(data: recordsDto) {
+  getQuery(data: recordsDto): Promise<Array<Object>> {
     const { tablename, fields } = data;
     const tablesValid: Array<string> = ['users'];
-    const columnsvalid = [
+    const columnsvalid: string[] = [
       'first_name',
       'last_name',
       'createdAt',
@@ -31,7 +31,9 @@ export class UserService {
     );
   }
 
-  async getFiltered(data: filterDto) {
+  async getFiltered(
+    data: filterDto,
+  ): Promise<userEntity[] | { message: string }> {
     const { email, first_name, last_name, tablename } = data;
 
     const tablesValid: Array<string> = ['users'];

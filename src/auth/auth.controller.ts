@@ -12,14 +12,7 @@ export class AuthController {
     return this.authService.signup(body);
   }
   @Post('/signin')
-  signin(@Body() body: signInInterface): Promise<
-    | {
-        token: string;
-      }
-    | {
-        error: any;
-      }
-  > {
+  signin(@Body() body: signInInterface): Promise<|{token: string}|{error: any}> {
     return this.authService.signin(body);
   }
 }

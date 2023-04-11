@@ -5,7 +5,7 @@ export declare class UserService {
     private readonly userRepo;
     private readonly connection;
     constructor(userRepo: Repository<userEntity>, connection: DataSource);
-    getQuery(data: recordsDto): Promise<any>;
+    getQuery(data: recordsDto): Promise<Array<Object>>;
     getFiltered(data: filterDto): Promise<userEntity[] | {
         message: string;
     }>;
