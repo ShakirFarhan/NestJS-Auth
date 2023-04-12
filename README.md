@@ -49,12 +49,12 @@ $ npm run start:prod
 
 To connect to the database, please make sure to set the following environment variables:
 
-DATABASE_PORT = 5432
-DATABASE_USER = postgres
-DATABASE_PASSWORD = "Your Postgres Password"
-DATABASE_HOST = 127.0.0.1
-DATABASE_NAME = "Database Name" -- If there is some error during creating the database you can go to the PG Admin app and manually create the database with suitable name" 
-SECRET_KEY = "Provide a Secret Key" -- this is used in setting up the Authentication(JWT Auth)
+1. DATABASE_PORT = 5432
+2. DATABASE_USER = postgres
+3. DATABASE_PASSWORD = "Your Postgres Password"
+4. DATABASE_HOST = 127.0.0.1
+5. DATABASE_NAME = "Database Name" -- If there is some error during creating the database you can go to the PG Admin app and manually create the database with suitable name" 
+6. SECRET_KEY = "Provide a Secret Key" -- this is used in setting up the Authentication(JWT Auth)
 
 ## Test
 
